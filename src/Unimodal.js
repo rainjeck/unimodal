@@ -1,4 +1,4 @@
-export default class Unimodal {
+class Unimodal {
   constructor( opts = {} ) {
     let params = opts || {};
 

@@ -85,12 +85,12 @@ Important attributes:
         <div class="row">
           <p>Public Methods:</p>
           <pre class="language-javascript"><code>/* Open Modal */
-Unimodal.default.open('your-modal-id', () => {
+Unimodal.open('your-modal-id', () => {
   /* ... your callback here ... */
 });
 
 /* Close Modal */
-Unimodal.default.close('your-modal-id', () => {
+Unimodal.close('your-modal-id', () => {
   /* ... your callback here ... */
 });
 
@@ -101,14 +101,33 @@ modal.close('your-modal-id');</code></pre>
       </div>
       <!-- .block-->
       <div class="block wrap">
-        <div class="row">
-          <h3>Demo</h3>
+        <div class="block">
+          <div class="row">
+            <h3>Demo</h3>
+          </div>
+          <div class="row">
+            <p><a class="modalBtn" href="#!" data-unimodal-open="simple-modal">Open Modal</a></p>
+          </div>
+          <div class="row">
+            <p><a class="modalBtn" href="#!" data-unimodal-open="long-modal">Open Long Modal</a></p>
+          </div>
         </div>
-        <div class="row">
-          <p><a class="modalBtn" href="#!" data-unimodal-open="simple-modal">Open Modal</a></p>
-        </div>
-        <div class="row">
-          <p><a class="modalBtn" href="#!" data-unimodal-open="long-modal">Open Long Modal</a></p>
+        <div class="block">
+          <div class="row">
+            <p>Custom Button</p>
+          </div>
+          <div class="row">
+            <pre class="language-markup"><code>&lt;button type='button' id='custom-button'&gt;Custom Modal&lt;/button&gt;</code></pre>
+          </div>
+          <div class="row">
+            <pre class="language-javascript"><code>const button = document.querySelector('#custom-button');
+button.addEventListener('click', e => {
+  modal.open('custom-modal');
+});</code></pre>
+          </div>
+          <div class="row">
+            <button class="modalBtn" id="custom-button" type="button">Custom Modal Button</button>
+          </div>
         </div>
       </div>
       <!-- .block-->
@@ -268,6 +287,15 @@ const modal = new Unimodal.default({
         <button class="modal-close" type="button" data-unimodal-close>Close</button>
         <div class="text-center">
           <p>This is Other Modal</p>
+        </div>
+      </div>
+    </div>
+    <!-- .unimodal-->
+    <div class="unimodal" id="custom-modal" data-unimodal>
+      <div class="unimodal-body simple-modal" data-unimodal-body>
+        <button class="modal-close" data-unimodal-close>Close</button>
+        <div class="text-center">
+          <p>This is Custom Modal</p>
         </div>
       </div>
     </div>

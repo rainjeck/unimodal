@@ -97,12 +97,12 @@ html(lang="ru-RU")
           p Public Methods:
           pre.language-javascript: code.
             /* Open Modal */
-            Unimodal.default.open('your-modal-id', () => {
+            Unimodal.open('your-modal-id', () => {
               /* ... your callback here ... */
             });
 
             /* Close Modal */
-            Unimodal.default.close('your-modal-id', () => {
+            Unimodal.close('your-modal-id', () => {
               /* ... your callback here ... */
             });
 
@@ -112,12 +112,28 @@ html(lang="ru-RU")
       // .block
 
       .block.wrap
-        .row
-          h3 Demo
-        .row
-          p: a(href="#!" class="modalBtn" data-unimodal-open="simple-modal") Open Modal
-        .row
-          p: a(href="#!" class="modalBtn" data-unimodal-open="long-modal") Open Long Modal
+        .block
+          .row
+            h3 Demo
+          .row
+            p: a(href="#!" class="modalBtn" data-unimodal-open="simple-modal") Open Modal
+          .row
+            p: a(href="#!" class="modalBtn" data-unimodal-open="long-modal") Open Long Modal
+        .block
+          .row
+            p Custom Button
+          .row
+            pre.language-markup: code.
+              #{"<button type='button' id='custom-button'>Custom Modal</button>"}
+          .row
+            pre.language-javascript: code.
+              const button = document.querySelector('#custom-button');
+              button.addEventListener('click', e => {
+                modal.open('custom-modal');
+              });
+          .row
+            button#custom-button(type="button" class="modalBtn") Custom Modal Button
+
       // .block
 
       .block.wrap
@@ -263,6 +279,13 @@ html(lang="ru-RU")
         button.modal-close(type="button" data-unimodal-close) Close
         .text-center
           p This is Other Modal
+    // .unimodal
+
+    .unimodal#custom-modal(data-unimodal)
+      .unimodal-body.simple-modal(data-unimodal-body)
+        button.modal-close(data-unimodal-close) Close
+        .text-center
+          p This is Custom Modal
     // .unimodal
 
     .unimodal#modal-video(data-unimodal)

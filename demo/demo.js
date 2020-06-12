@@ -12,7 +12,7 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-var modal = new Unimodal.default({
+var modal = new Unimodal({
   scrollWindow: false,
   hash: false,
   onOpen: function( modal, button ) {
@@ -50,4 +50,9 @@ var modal = new Unimodal.default({
       player.stopVideo();
     }
   }
+});
+
+var customButton = document.querySelector('#custom-button');
+customButton.addEventListener('click', function(e) {
+  modal.open('custom-modal');
 });

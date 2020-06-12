@@ -15,13 +15,14 @@ gulp.task("js", function() {
           [ '@babel/preset-env' ]
         ],
         plugins: [
-          "@babel/plugin-transform-modules-umd",
+          // "@babel/plugin-transform-modules-umd",
           "@babel/plugin-proposal-class-properties"
         ],
       }, ).on("error",
         plugin.notify.onError("*** JS ***: <%= error.message %>")
       )
     )
+    .pipe( plugin.umd() )
     .pipe(plugin.rename({
       basename: pluginName.toLowerCase()
     }))
