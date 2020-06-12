@@ -4,7 +4,11 @@
   "description": "Simple vanilla javascript modal",
   "main": "index.js",
   "author": "Tishuk Nadezda",
-  "homepage": "",
+  "homepage": "https://rainjeck.github.io/unimodal/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rainjeck/unimodal"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.5",
