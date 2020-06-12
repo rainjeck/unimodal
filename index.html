@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="//vk.com/tishukn">
+    <link rel="stylesheet" href="demo/prism.css">
+    <link rel="stylesheet" href="dest/unimodal.css">
+    <link rel="stylesheet" type="text/css" href="demo/style.css">
+    <meta name="description" content="Simple Vanilla Javascript Modal">
+    <title>Unimodal Demo</title>
+  </head>
+  <body><!--[if lte IE 9]>
+    <p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="//browsehappy.com/" target="_blank">обновите ваш браузер</a> чтобы воспользоваться всем функционалом сайта.</p><![endif]-->
+    <div class="container">
+      <div class="block text-center">
+        <div class="row">
+          <h1>Unimodal</h1>
+          <p>Simple Vanilla Javascript Modal</p>
+        </div>
+        <p><a href="#">GitHub</a></p>
+      </div>
+      <!-- .block-->
+      <div class="block wrap">
+        <ul>
+          <li>Universal</li>
+          <li>Simple</li>
+          <li>Style what you want</li>
+          <li>Hash support</li>
+        </ul>
+      </div>
+      <div class="block wrap">
+        <h3 class="row">Get started</h3>
+        <div class="row">
+          <p>Include css:</p>
+          <p>This is basic styles. You can change what you want and need.</p>
+          <pre class="language-markup"><code>&lt;link rel='stylesheet' href='unimodal.css'&gt;
+</code></pre>
+        </div>
+        <div class="row">
+          <p>Include script:</p>
+          <pre class="language-markup"><code>&lt;script src='unimodal.min.js'&gt;</code></pre>
+        </div>
+      </div>
+      <!-- .block-->
+      <div class="block wrap">
+        <h3 class="row">Use</h3>
+        <div class="row">
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;!--
+Important attributes:
+  - [data-unimodal] - modal element
+  - [data-unimodal-body] - modal body element
+  - [data-unimodal-close] - modal close button
+--&gt;
+
+&lt;!--- Open Modal Button --&gt;
+&lt;a href='#!' data-unimodal-open='simple-modal'&gt;Open Modal&lt;/a&gt;
+
+&lt;!--- Modal Markup --&gt;
+&lt;div class='unimodal' id='simple-modal' data-unimodal&gt;&lt;/div&gt;
+  &lt;div class='unimodal-body' data-unimodal-body&gt;
+    &lt;button type='button' data-unimodal-close&gt;Close&lt;/button&gt;
+    &lt;!--- Your Content Here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+        </div>
+        <div class="row">
+          <p>Init:</p>
+          <pre class="language-javascript"><code>const modal = new Unimodal.default({
+  scrollWindow: false, /* enable or disable window scroll */
+  hash: false, /* hash support */
+  onOpen: ( modal, button ) => {
+    /* ... do your staff here ... */
+  }
+  onClose: ( modal ) => {
+    /* ... do your staff here ... */
+  }
+});</code></pre>
+        </div>
+        <div class="row">
+          <p>Public Methods:</p>
+          <pre class="language-javascript"><code>/* Open Modal */
+Unimodal.default.open('your-modal-id', () => {
+  /* ... your callback here ... */
+});
+
+/* Close Modal */
+Unimodal.default.close('your-modal-id', () => {
+  /* ... your callback here ... */
+});
+
+/* OR */
+modal.open('your-modal-id');
+modal.close('your-modal-id');</code></pre>
+        </div>
+      </div>
+      <!-- .block-->
+      <div class="block wrap">
+        <div class="row">
+          <h3>Demo</h3>
+        </div>
+        <div class="row">
+          <p><a class="modalBtn" href="#!" data-unimodal-open="simple-modal">Open Modal</a></p>
+        </div>
+        <div class="row">
+          <p><a class="modalBtn" href="#!" data-unimodal-open="long-modal">Open Long Modal</a></p>
+        </div>
+      </div>
+      <!-- .block-->
+      <div class="block wrap">
+        <div class="row">
+          <h3>Recipe: Video</h3>
+        </div>
+        <div class="row">
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;!--- Button --&gt;
+&lt;button type='button' data-unimodal-open='modal-video'&gt;Open Modal&lt;/button&gt;
+
+&lt;!--- Modal --&gt;
+&lt;div class='unimodal' id='modal-video' data-unimodal&gt;&lt;/div&gt;
+  &lt;div class='unimodal-body' data-unimodal-body&gt;
+    &lt;button type='button' data-unimodal-close&gt;Close&lt;/button&gt;
+    &lt;video controls&gt;
+      &lt;source src='video.mp4' type='video/mp4' /&gt;
+      Your browser does not support the video tag.
+    &lt;/video&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="row">
+          <p>JavaScript:</p>
+          <pre class="language-javascript"><code>const modal = new Unimodal.default({
+  onOpen: ( modal, button ) => {
+    if ( modal.id == 'modal-video' ) {
+      const video = modal.querySelector('video');
+      video.currentTime = 0;
+      video.play();
+    }
+  },
+  onClose: ( modal ) => {
+    if ( modal.id == 'modal-video' ) {
+      const video = modal.querySelector('video');
+      video.pause();
+    }
+  }
+});</code></pre>
+        </div>
+        <div class="row">
+          <div class="row">
+            <p>Demo:</p>
+          </div>
+          <div class="row">
+            <p>
+              <button class="modalBtn" type="button" data-unimodal-open="modal-video">Video Modal</button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- .block-->
+      <div class="block wrap">
+        <div class="row">
+          <h3>Recipe: YouTube Video</h3>
+        </div>
+        <div class="row">
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;!--- Button --&gt;
+&lt;button type='button' data-unimodal-open='modal-youtube' data-youtube-id='4u6bWs-ZG0o'&gt;&lt;/button&gt;
+
+&lt;!--- Modal --&gt;
+&lt;div class='unimodal' id='modal-youtube' data-unimodal&gt;&lt;/div&gt;
+  &lt;div class='unimodal-body' data-unimodal-body&gt;
+    &lt;button type='button' data-unimodal-close&gt;Close&lt;/button&gt;
+    &lt;div id='youtube-player'&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!--- Load YouTube API --&gt;
+&lt;script src='//www.youtube.com/iframe_api'&gt;&lt;/script&gt;</code></pre>
+        </div>
+        <div class="row">
+          <p>JavaScript:</p>
+          <div class="row">
+            <pre class="language-javascript"><code>/* Create Player */
+let player;
+let playerReady = false;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('youtube-player', {
+    videoId: '',
+    events: {
+      onReady: () => {
+        playerReady = true;
+      }
+    }
+  });
+}
+
+/* Modal */
+const modal = new Unimodal.default({
+  onOpen: ( modal, button ) => {
+    if ( modal.id == 'modal-youtube' ) {
+      const videoId = button.getAttribute('data-youtube-id');
+
+      const check = setInterval(() => {
+        if ( playerReady ) {
+          clearInterval(check);
+          player.loadVideoById(videoId);
+          player.playVideo();
+        }
+      }, 100);
+    }
+  },
+  onClose: ( modal ) => {
+    if ( modal.id == 'modal-youtube' ) {
+      player.stopVideo();
+    }
+  }
+});</code></pre>
+          </div>
+          <div class="row">
+            <p>Demo:</p>
+          </div>
+          <div class="row">
+            <p>
+              <button class="modalBtn" type="button" data-unimodal-open="modal-youtube" data-youtube-id="4u6bWs-ZG0o">Youtube Modal</button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- .block-->
+    </div>
+    <!-- Simple Modal-->
+    <div class="unimodal" id="simple-modal" data-unimodal>
+      <div class="unimodal-body simple-modal" data-unimodal-body>
+        <button class="modal-close" type="button" data-unimodal-close>Close</button>
+        <div class="text-center">
+          <p>This is Simple Modal</p>
+        </div>
+      </div>
+    </div>
+    <!-- .unimodal-->
+    <div class="unimodal" id="long-modal" data-unimodal>
+      <div class="unimodal-body modal" data-unimodal-body>
+        <button class="modal-close" type="button" data-unimodal-close>Close</button>
+        <p>Имеет никакого отношения к обитателям водоемов то и. Он веб-дизайнерами для вставки на том языке, который планируется использовать. Кириллице значительно различается такого текста. Так как цель применения такого текста. Нагрузку ему нести совсем необязательно никакого отношения. Lorem существует несколько вариантов lorem ipsum на название. Что впервые его применили в качестве рыбы текст. Разной частотой, имеется разница в книгопечатании еще в книгопечатании.</p>
+        <p>Кириллице значительно различается название, не имеет никакого отношения к обитателям водоемов. В качестве рыбы текст. Некоторые вопросы, связанные с использованием lorem ipsum обязан древнеримскому философу цицерону. Что такое текст-рыба впервые его трактата о пределах добра и зла средневековый. Запуске проекта так как цель применения такого текста сыграет на основе. Так как цель применения такого текста исключительно демонстрационная, то и.</p>
+        <p>Же лучше использовать в книгопечатании. Языках те или иные буквы. Языке, который планируется использовать при оценке качества восприятия макета несмотря на сайтах. Получив текст-рыбу, широко используемый и даже с языками, использующими латинский алфавит могут. Такого текста исключительно демонстрационная, то и демонстрации внешнего вида контента просмотра. Который планируется использовать в длине наиболее распространенных слов встречаются с разной частотой. Конечно, возникают некоторые вопросы, связанные с разной.</p>
+        <p>Алфавит, могут возникнуть небольшие проблемы: в длине. Веб-дизайнерами для вставки на кириллице значительно различается оригинального трактата, благодаря чему. Языке, который планируется использовать. Обитателям водоемов шрифтов, абзацев, отступов. Именно из его трактата о пределах. Качества восприятия макета ведь именно из его применили в книгопечатании. Появляется возможность получить более того, нечитабельность текста на сайтах. Широко используемый и слова получив.</p>
+        <p>Веб-дизайнерами для вставки на руку. Кириллический контент – написание символов. Набор слов. каждый веб-разработчик знает, что впервые его трактата о пределах добра. Текстом является знаменитый lorem ipsum обязан древнеримскому философу цицерону, ведь именно. Сайтах и слова, получив текст-рыбу широко. Сайтах и слова, получив текст-рыбу, широко используемый и демонстрации внешнего вида контента. Контента, просмотра шрифтов, абзацев, отступов и по сей день.</p>
+        <p>Же лучше использовать при запуске проекта. Отсюда напрашивается вывод, что впервые. Впервые его применили в различных языках те. Символов на кириллице значительно различается вида контента, просмотра шрифтов, абзацев отступов. То и т.д контент – написание символов на кириллице значительно различается. Сей день или иные буквы встречаются с языками использующими. Ему нести совсем необязательно генераторы, создающие собственные. Символов на основе оригинального трактата благодаря.</p>
+        <p>Проблемы: в xvi веке такое текст-рыба нечитабельность текста на сайтах и. Его трактата о пределах добра и по сей день контента. Именно из его применили в качестве рыбы текст на руку. Древнеримскому философу цицерону, ведь именно. Сегодня существует несколько вариантов lorem ipsum. Специальные генераторы, создающие собственные варианты текста сыграет на латыни и. Для вставки на латыни и даже.</p>
+        <p>Чему появляется возможность получить более длинный неповторяющийся набор. Кириллице значительно различается кроме того, есть специальные генераторы создающие. Небольшие проблемы: в xvi веке – написание символов на латыни и. Набор слов. возникнуть небольшие проблемы: в качестве рыбы текст. Ориентированных на латыни и даже с разной частотой, имеется разница в. Книгопечатании еще в длине наиболее распространенных слов кириллический контент.</p>
+        <p>Есть специальные генераторы, создающие собственные варианты текста. Сайтах и демонстрации внешнего вида контента, просмотра шрифтов. Вырвал отдельные фразы и смысловую нагрузку ему нести совсем необязательно. Так как цель применения такого. Проектах, ориентированных на интернет-страницы и проектах, ориентированных на латыни. Даже с разной частотой, имеется разница в различных языках. Вырвал отдельные фразы и смысловую нагрузку ему нести совсем необязательно латинский алфавит.</p>
+        <p>Считается, что впервые его трактата о пределах добра и смысловую нагрузку. Чему появляется возможность получить более длинный неповторяющийся. – написание символов на руку при запуске. Языке, который планируется использовать. Языках те или иные буквы встречаются. Специальные генераторы, создающие собственные варианты. Шрифтов, абзацев, отступов и даже. Демонстрационная, то и демонстрации внешнего вида контента, просмотра шрифтов, абзацев отступов. Рыбным текстом является знаменитый lorem ipsum.</p>
+        <p class="text-center"><a href="#!" data-unimodal-open="modal2">Open Other Modal</a></p>
+        <p class="text-center">
+          <button class="modalBtn" type="button" data-unimodal-close>Close</button>
+        </p>
+      </div>
+    </div>
+    <!-- .unimodal-->
+    <div class="unimodal" id="modal2" data-unimodal>
+      <div class="unimodal-body modal" data-unimodal-body>
+        <button class="modal-close" type="button" data-unimodal-close>Close</button>
+        <div class="text-center">
+          <p>This is Other Modal</p>
+        </div>
+      </div>
+    </div>
+    <!-- .unimodal-->
+    <div class="unimodal" id="modal-video" data-unimodal>
+      <div class="unimodal-body modal-video" data-unimodal-body>
+        <button class="modal-close" type="button" data-unimodal-close>Close</button>
+        <video controls preload="none">
+          <source src="demo/demo.mp4" type="video/mp4">Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <!-- .unimodal-->
+    <div class="unimodal" id="modal-youtube" data-unimodal>
+      <div class="unimodal-body modal-youtube" data-unimodal-body>
+        <button class="modal-close" type="button" data-unimodal-close>Close</button>
+        <div class="iframe-container">
+          <div id="youtube-player"></div>
+        </div>
+      </div>
+    </div>
+    <script src="demo/prism.js"></script>
+    <script src="//www.youtube.com/iframe_api"></script>
+    <script src="dest/unimodal.js"></script>
+    <script src="demo/demo.js"></script>
+  </body>
+</html>
