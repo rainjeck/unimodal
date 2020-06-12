@@ -30,7 +30,7 @@ class Unimodal {
 
     document.addEventListener('click', e => {
       if ( e.target.closest('[data-unimodal-close]') ||
-        ( !e.target.closest('[data-unimodal-body]') && e.target.closest('[data-unimodal]') )
+        ( !e.target.closest('[data-unimodal-body]') && e.target.closest('[data-unimodal]') && !e.target.closest('[data-unimodal-static]') )
       ) {
         const modal = e.target.closest('[data-unimodal]');
 

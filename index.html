@@ -67,6 +67,9 @@ Important attributes:
     &lt;!--- Your Content Here --&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+
+&lt;!-- If you don't need close modal after click on overlay --&gt;
+&lt;div data-unimodal data-unimodal-static&gt; ... &lt;/div&gt;
 </code></pre>
         </div>
         <div class="row">
@@ -253,7 +256,7 @@ const modal = new Unimodal.default({
       <!-- .block-->
     </div>
     <!-- Simple Modal-->
-    <div class="unimodal" id="simple-modal" data-unimodal>
+    <div class="unimodal" id="simple-modal" data-unimodal data-unimodal-static>
       <div class="unimodal-body simple-modal" data-unimodal-body>
         <button class="modal-close" type="button" data-unimodal-close>Close</button>
         <div class="text-center">

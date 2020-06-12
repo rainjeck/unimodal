@@ -80,6 +80,9 @@ html(lang="ru-RU")
               #{"</div>"}
             #{"</div>"}
 
+            #{"<!-- If you don't need close modal after click on overlay -->"}
+            #{"<div data-unimodal data-unimodal-static> ... </div>"}
+
         .row
           p Init:
           pre.language-javascript: code.
@@ -246,7 +249,7 @@ html(lang="ru-RU")
 
 
     // Simple Modal
-    .unimodal#simple-modal(data-unimodal)
+    .unimodal#simple-modal(data-unimodal data-unimodal-static)
       .unimodal-body.simple-modal(data-unimodal-body)
         button.modal-close(type="button" data-unimodal-close) Close
         .text-center
