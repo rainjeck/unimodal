@@ -1,5 +1,4 @@
 # Unimodal
----
 
 Simple Vanilla Javascript Modal
 
@@ -8,7 +7,7 @@ Simple Vanilla Javascript Modal
 - Style what you want
 - Hash support
 
-[Demo & Documentation]()
+[Demo & Documentation](//rainjeck.github.io/unimodal/)
 
 ---
 
