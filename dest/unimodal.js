@@ -112,12 +112,12 @@ var Unimodal = /*#__PURE__*/function () {
   }, {
     key: "disableScroll",
     value: function disableScroll() {
-      document.body.classList.add('is-unimodal-active');
+      document.documentElement.classList.add('is-unimodal-active');
     }
   }, {
     key: "enableScroll",
     value: function enableScroll() {
-      document.body.classList.remove('is-unimodal-active');
+      document.documentElement.classList.remove('is-unimodal-active');
     }
   }, {
     key: "checkModalHeight",

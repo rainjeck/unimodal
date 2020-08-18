@@ -86,11 +86,11 @@ class Unimodal {
   }
 
   disableScroll() {
-    document.body.classList.add('is-unimodal-active');
+    document.documentElement.classList.add('is-unimodal-active');
   }
 
   enableScroll() {
-    document.body.classList.remove('is-unimodal-active');
+    document.documentElement.classList.remove('is-unimodal-active');
   }
 
   checkModalHeight( modalElem ) {

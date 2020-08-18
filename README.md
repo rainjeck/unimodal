@@ -56,7 +56,7 @@ Important attributes:
 JavaScript:
 
 ```
-const modal = new Unimodal.default({
+const modal = new Unimodal({
   scrollWindow: false, /* enable or disable window scroll */
   hash: false, /* hash support */
   onOpen: ( modal, button ) => {
@@ -72,12 +72,12 @@ Public Methods:
 
 ```
 /* Open Modal */
-Unimodal.default.open('your-modal-id', () => {
+Unimodal.open('your-modal-id', () => {
   /* ... your callback here ... */
 });
 
 /* Close Modal */
-Unimodal.default.close('your-modal-id', () => {
+Unimodal.close('your-modal-id', () => {
   /* ... your callback here ... */
 });
 
