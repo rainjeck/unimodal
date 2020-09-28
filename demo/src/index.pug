@@ -48,12 +48,12 @@ html(lang="ru-RU")
           p This is basic styles. You can change what you want and need.
 
           pre.language-markup: code.
-            #{"<link rel='stylesheet' href='unimodal.css'>"}
+            #{'<link rel="stylesheet" href="unimodal.css">'}
 
         .row
           p Include script:
           pre.language-markup: code.
-            #{"<script src='unimodal.min.js'>"}
+            #{'<script src="unimodal.min.js">'}
       // .block
 
       .block.wrap
@@ -62,26 +62,26 @@ html(lang="ru-RU")
         .row
           p HTML:
           pre.language-markup: code.
-            #{"<!--"}
+            #{'<!--'}
             Important attributes:
               - [data-unimodal] - modal element
               - [data-unimodal-body] - modal body element
               - [data-unimodal-close] - modal close button
-            #{"-->"}
+            #{'-->'}
 
-            #{"<!--- Open Modal Button -->"}
-            #{"<a href='#!' data-unimodal-open='simple-modal'>Open Modal</a>"}
+            #{'<!--- Open Modal Button -->'}
+            #{'<a href="#!" data-unimodal-open="simple-modal">Open Modal</a>'}
 
-            #{"<!--- Modal Markup -->"}
-            #{"<div class='unimodal' id='simple-modal' data-unimodal></div>"}
-              #{"<div class='unimodal-body' data-unimodal-body>"}
-                #{"<button type='button' data-unimodal-close>Close</button>"}
-                #{"<!--- Your Content Here -->"}
-              #{"</div>"}
-            #{"</div>"}
+            #{'<!--- Modal Markup -->'}
+            #{'<div class="unimodal" id="simple-modal" data-unimodal>'}
+              #{'<div class="unimodal-body" data-unimodal-body>'}
+                #{'<button type="button" data-unimodal-close>Close</button>'}
+                #{'<!--- Your Content Here -->'}
+              #{'</div>'}
+            #{'</div>'}
 
-            #{"<!-- If you don't need close modal after click on overlay -->"}
-            #{"<div data-unimodal data-unimodal-static> ... </div>"}
+            #{'<!-- If you don\'t need close modal after click on overlay -->'}
+            #{'<div data-unimodal data-unimodal-static> ... </div>'}
 
         .row
           p Init:
@@ -91,7 +91,7 @@ html(lang="ru-RU")
               hash: false, /* hash support */
               onOpen: ( modal, button ) => {
                 /* ... do your staff here ... */
-              }
+              },
               onClose: ( modal ) => {
                 /* ... do your staff here ... */
               }

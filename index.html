@@ -37,12 +37,12 @@
         <div class="row">
           <p>Include css:</p>
           <p>This is basic styles. You can change what you want and need.</p>
-          <pre class="language-markup"><code>&lt;link rel='stylesheet' href='unimodal.css'&gt;
+          <pre class="language-markup"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;unimodal.css&quot;&gt;
 </code></pre>
         </div>
         <div class="row">
           <p>Include script:</p>
-          <pre class="language-markup"><code>&lt;script src='unimodal.min.js'&gt;</code></pre>
+          <pre class="language-markup"><code>&lt;script src=&quot;unimodal.min.js&quot;&gt;</code></pre>
         </div>
       </div>
       <!-- .block-->
@@ -58,12 +58,12 @@ Important attributes:
 --&gt;
 
 &lt;!--- Open Modal Button --&gt;
-&lt;a href='#!' data-unimodal-open='simple-modal'&gt;Open Modal&lt;/a&gt;
+&lt;a href=&quot;#!&quot; data-unimodal-open=&quot;simple-modal&quot;&gt;Open Modal&lt;/a&gt;
 
 &lt;!--- Modal Markup --&gt;
-&lt;div class='unimodal' id='simple-modal' data-unimodal&gt;&lt;/div&gt;
-  &lt;div class='unimodal-body' data-unimodal-body&gt;
-    &lt;button type='button' data-unimodal-close&gt;Close&lt;/button&gt;
+&lt;div class=&quot;unimodal&quot; id=&quot;simple-modal&quot; data-unimodal&gt;
+  &lt;div class=&quot;unimodal-body&quot; data-unimodal-body&gt;
+    &lt;button type=&quot;button&quot; data-unimodal-close&gt;Close&lt;/button&gt;
     &lt;!--- Your Content Here --&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -74,12 +74,12 @@ Important attributes:
         </div>
         <div class="row">
           <p>Init:</p>
-          <pre class="language-javascript"><code>const modal = new Unimodal({
+          <pre class="language-javascript"><code>const modal = new Unimodal.default({
   scrollWindow: false, /* enable or disable window scroll */
   hash: false, /* hash support */
   onOpen: ( modal, button ) => {
     /* ... do your staff here ... */
-  }
+  },
   onClose: ( modal ) => {
     /* ... do your staff here ... */
   }
