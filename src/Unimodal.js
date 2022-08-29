@@ -114,6 +114,10 @@ class Unimodal {
     }
   }
 
+  closeAll() {
+    this.closePrevious();
+  }
+
   setHash( hash = '' ) {
     if ( !this.hash ) return;
 
@@ -143,8 +147,16 @@ Unimodal.open = ( id, callback ) => {
   }
 }
 
-Unimodal.close = ( id, callback ) => {
+Unimodal.close = (id, callback) => {
   Unimodal.prototype.close( id );
+
+  if (callback && typeof callback === 'function') {
+    callback();
+  }
+}
+
+Unimodal.closeAll = callback => {
+  Unimodal.prototype.closePrevious();
 
   if (callback && typeof callback === 'function') {
     callback();

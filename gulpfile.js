@@ -12,17 +12,16 @@ gulp.task("js", function() {
     .pipe(
       plugin.babel({
         presets: [
-          [ '@babel/preset-env' ]
+          ['@babel/preset-env']
         ],
         plugins: [
-          // "@babel/plugin-transform-modules-umd",
           "@babel/plugin-proposal-class-properties"
         ],
       }, ).on("error",
         plugin.notify.onError("*** JS ***: <%= error.message %>")
       )
     )
-    .pipe( plugin.umd() )
+    .pipe(plugin.umd())
     .pipe(plugin.rename({
       basename: pluginName.toLowerCase()
     }))
@@ -81,7 +80,7 @@ gulp.task("styl-minify", function() {
   return (
     gulp
     .src(["dest/" + pluginName.toLowerCase() + ".css"])
-    .pipe( plugin.cleanCss() )
+    .pipe(plugin.cleanCss())
     .pipe(plugin.rename({
       suffix: '.min'
     }))
@@ -108,7 +107,7 @@ gulp.task("css", function() {
   );
 });
 
-gulp.task("pug", function () {
+gulp.task("pug", function() {
   return gulp
     .src(["./demo/src/*.pug"])
     .pipe(
@@ -121,7 +120,7 @@ gulp.task("pug", function () {
 });
 
 // --- WATCHER
-gulp.task("watcher", function (done) {
+gulp.task("watcher", function(done) {
   browserSync.reload("/");
   done();
 });

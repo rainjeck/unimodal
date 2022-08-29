@@ -143,6 +143,11 @@ var Unimodal = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "closeAll",
+    value: function closeAll() {
+      this.closePrevious();
+    }
+  }, {
     key: "setHash",
     value: function setHash() {
       var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
@@ -177,6 +182,14 @@ Unimodal.open = function (id, callback) {
 
 Unimodal.close = function (id, callback) {
   Unimodal.prototype.close(id);
+
+  if (callback && typeof callback === 'function') {
+    callback();
+  }
+};
+
+Unimodal.closeAll = function (callback) {
+  Unimodal.prototype.closePrevious();
 
   if (callback && typeof callback === 'function') {
     callback();

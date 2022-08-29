@@ -74,7 +74,7 @@ Important attributes:
         </div>
         <div class="row">
           <p>Init:</p>
-          <pre class="language-javascript"><code>const modal = new Unimodal.default({
+          <pre class="language-javascript"><code>const modal = new Unimodal({
   scrollWindow: false, /* enable or disable window scroll */
   hash: false, /* hash support */
   onOpen: ( modal, button ) => {
@@ -97,9 +97,15 @@ Unimodal.close('your-modal-id', () => {
   /* ... your callback here ... */
 });
 
+/* Close All Modal */
+Unimodal.closeAll(() => {
+  /* ... your callback here ... */
+});
+
 /* OR */
 modal.open('your-modal-id');
-modal.close('your-modal-id');</code></pre>
+modal.close('your-modal-id');
+modal.closeAll();</code></pre>
         </div>
       </div>
       <!-- .block-->
@@ -156,7 +162,7 @@ button.addEventListener('click', e => {
         </div>
         <div class="row">
           <p>JavaScript:</p>
-          <pre class="language-javascript"><code>const modal = new Unimodal.default({
+          <pre class="language-javascript"><code>const modal = new Unimodal({
   onOpen: ( modal, button ) => {
     if ( modal.id == 'modal-video' ) {
       const video = modal.querySelector('video');
@@ -222,7 +228,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 /* Modal */
-const modal = new Unimodal.default({
+const modal = new Unimodal({
   onOpen: ( modal, button ) => {
     if ( modal.id == 'modal-youtube' ) {
       const videoId = button.getAttribute('data-youtube-id');

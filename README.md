@@ -81,7 +81,13 @@ Unimodal.close('your-modal-id', () => {
   /* ... your callback here ... */
 });
 
+/* Close All Modals */
+Unimodal.closeAll(() => {
+  /* ... your callback here ... */
+});
+
 /* OR */
 modal.open('your-modal-id');
 modal.close('your-modal-id');
+modal.closeAll();
 ```
