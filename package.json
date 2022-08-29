@@ -21,7 +21,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
-    "gulp-header-comment": "^0.8.0",
+    "gulp-header-comment": "^0.10.0",
     "gulp-jsmin": "^0.1.5",
     "gulp-load-plugins": "^2.0.3",
     "gulp-notify": "^3.2.0",
