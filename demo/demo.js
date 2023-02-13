@@ -12,7 +12,7 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-var modal = new Unimodal({
+new Unimodal({
   scrollWindow: false,
   hash: false,
   onOpen: function( modal, button ) {
@@ -37,6 +37,10 @@ var modal = new Unimodal({
         }
       }, 100);
     }
+
+    if ( modal.id == 'modal-youtube2' ) {
+      modal.querySelector('iframe').setAttribute('src', button.getAttribute('data-youtube-src'));
+    }
   },
   onClose: function( modal ) {
     console.log('Close:', modal.id);
@@ -49,10 +53,14 @@ var modal = new Unimodal({
     if ( modal.id == 'modal-youtube' ) {
       player.stopVideo();
     }
+
+    if ( modal.id == 'modal-youtube2' ) {
+      modal.querySelector('iframe').setAttribute('src', '');
+    }
   }
 });
 
 var customButton = document.querySelector('#custom-button');
 customButton.addEventListener('click', function(e) {
-  modal.open('custom-modal');
+  Unimodal.open('custom-modal');
 });

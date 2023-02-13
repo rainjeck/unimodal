@@ -21,7 +21,7 @@ gulp.task("js", function() {
         plugin.notify.onError("*** JS ***: <%= error.message %>")
       )
     )
-    .pipe(plugin.umd())
+      .pipe(plugin.umd())
     .pipe(plugin.rename({
       basename: pluginName.toLowerCase()
     }))

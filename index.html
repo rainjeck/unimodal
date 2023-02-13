@@ -80,7 +80,7 @@ Important attributes:
   onOpen: ( modal, button ) => {
     /* ... do your staff here ... */
   },
-  onClose: ( modal ) => {
+  onClose: modal => {
     /* ... do your staff here ... */
   }
 });</code></pre>
@@ -97,15 +97,12 @@ Unimodal.close('your-modal-id', () => {
   /* ... your callback here ... */
 });
 
-/* Close All Modal */
-Unimodal.closeAll(() => {
-  /* ... your callback here ... */
-});
-
 /* OR */
 modal.open('your-modal-id');
 modal.close('your-modal-id');
-modal.closeAll();</code></pre>
+
+/* Close Modals */
+Unimodal.closeAll();</code></pre>
         </div>
       </div>
       <!-- .block-->
@@ -170,7 +167,7 @@ button.addEventListener('click', e => {
       video.play();
     }
   },
-  onClose: ( modal ) => {
+  onClose: modal => {
     if ( modal.id == 'modal-video' ) {
       const video = modal.querySelector('video');
       video.pause();
@@ -242,7 +239,7 @@ const modal = new Unimodal({
       }, 100);
     }
   },
-  onClose: ( modal ) => {
+  onClose: modal => {
     if ( modal.id == 'modal-youtube' ) {
       player.stopVideo();
     }
@@ -255,6 +252,53 @@ const modal = new Unimodal({
           <div class="row">
             <p>
               <button class="modalBtn" type="button" data-unimodal-open="modal-youtube" data-youtube-id="4u6bWs-ZG0o">Youtube Modal</button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- .block-->
+      <div class="block wrap">
+        <div class="row">
+          <h3>Recipe: YouTube Video without API</h3>
+        </div>
+        <div class="row">
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;!--- Button --&gt;
+&lt;button type='button' data-unimodal-open='modal-youtube2' data-youtube-src='https://www.youtube.com/embed/-Ot0vHUyEpw'&gt;&lt;/button&gt;
+
+&lt;!--- Modal --&gt;
+&lt;div class='unimodal' id='modal-youtube2' data-unimodal&gt;&lt;/div&gt;
+  &lt;div class='unimodal-body' data-unimodal-body&gt;
+    &lt;button type='button' data-unimodal-close&gt;Close&lt;/button&gt;
+    &lt;iframe src=''&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="row">
+          <p>JavaScript:</p>
+          <div class="row">
+            <pre class="language-javascript"><code>/* Modal */
+const modal = new Unimodal({
+  onOpen: ( modal, button ) => {
+    if ( modal.id == 'modal-youtube2' ) {
+      const videoSrc = button.getAttribute('data-youtube-src');
+
+      modal.querySelector('iframe').setAttribute('src', videoSrc);
+    }
+  },
+  onClose: modal => {
+    if ( modal.id == 'modal-youtube2' ) {
+      modal.querySelector('iframe').setAttribute('src', '');
+    }
+  }
+});</code></pre>
+          </div>
+          <div class="row">
+            <p>Demo:</p>
+          </div>
+          <div class="row">
+            <p>
+              <button class="modalBtn" type="button" data-unimodal-open="modal-youtube2" data-youtube-src="https://www.youtube.com/embed/-Ot0vHUyEpw">Youtube Modal without API</button>
             </p>
           </div>
         </div>
@@ -323,6 +367,14 @@ const modal = new Unimodal({
         <button class="modal-close" type="button" data-unimodal-close>Close</button>
         <div class="iframe-container">
           <div id="youtube-player"></div>
+        </div>
+      </div>
+    </div>
+    <div class="unimodal" id="modal-youtube2" data-unimodal>
+      <div class="unimodal-body modal-youtube" data-unimodal-body>
+        <button class="modal-close" type="button" data-unimodal-close>Close</button>
+        <div class="iframe-container">
+          <iframe src=""></iframe>
         </div>
       </div>
     </div>

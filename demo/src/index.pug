@@ -86,13 +86,13 @@ html(lang="ru-RU")
         .row
           p Init:
           pre.language-javascript: code.
-            const modal = new Unimodal.default({
+            const modal = new Unimodal({
               scrollWindow: false, /* enable or disable window scroll */
               hash: false, /* hash support */
               onOpen: ( modal, button ) => {
                 /* ... do your staff here ... */
               },
-              onClose: ( modal ) => {
+              onClose: modal => {
                 /* ... do your staff here ... */
               }
             });
@@ -112,6 +112,9 @@ html(lang="ru-RU")
             /* OR */
             modal.open('your-modal-id');
             modal.close('your-modal-id');
+
+            /* Close Modals */
+            Unimodal.closeAll();
       // .block
 
       .block.wrap
@@ -161,7 +164,7 @@ html(lang="ru-RU")
         .row
           p JavaScript:
           pre.language-javascript: code.
-            const modal = new Unimodal.default({
+            const modal = new Unimodal({
               onOpen: ( modal, button ) => {
                 if ( modal.id == 'modal-video' ) {
                   const video = modal.querySelector('video');
@@ -169,7 +172,7 @@ html(lang="ru-RU")
                   video.play();
                 }
               },
-              onClose: ( modal ) => {
+              onClose: modal => {
                 if ( modal.id == 'modal-video' ) {
                   const video = modal.querySelector('video');
                   video.pause();
@@ -221,7 +224,7 @@ html(lang="ru-RU")
               }
 
               /* Modal */
-              const modal = new Unimodal.default({
+              const modal = new Unimodal({
                 onOpen: ( modal, button ) => {
                   if ( modal.id == 'modal-youtube' ) {
                     const videoId = button.getAttribute('data-youtube-id');
@@ -235,7 +238,7 @@ html(lang="ru-RU")
                     }, 100);
                   }
                 },
-                onClose: ( modal ) => {
+                onClose: modal => {
                   if ( modal.id == 'modal-youtube' ) {
                     player.stopVideo();
                   }
@@ -245,6 +248,47 @@ html(lang="ru-RU")
             p Demo:
           .row
             p: button(type="button" class="modalBtn" data-unimodal-open="modal-youtube" data-youtube-id="4u6bWs-ZG0o") Youtube Modal
+      // .block
+
+      .block.wrap
+        .row
+          h3 Recipe: YouTube Video without API
+        .row
+          p HTML:
+          pre.language-markup: code.
+            #{"<!--- Button -->"}
+            #{"<button type='button' data-unimodal-open='modal-youtube2' data-youtube-src='https://www.youtube.com/embed/-Ot0vHUyEpw'></button>"}
+
+            #{"<!--- Modal -->"}
+            #{"<div class='unimodal' id='modal-youtube2' data-unimodal></div>"}
+              #{"<div class='unimodal-body' data-unimodal-body>"}
+                #{"<button type='button' data-unimodal-close>Close</button>"}
+                #{"<iframe src=''></div>"}
+              #{"</div>"}
+            #{"</div>"}
+        .row
+          p JavaScript:
+          .row
+            pre.language-javascript: code.
+              /* Modal */
+              const modal = new Unimodal({
+                onOpen: ( modal, button ) => {
+                  if ( modal.id == 'modal-youtube2' ) {
+                    const videoSrc = button.getAttribute('data-youtube-src');
+
+                    modal.querySelector('iframe').setAttribute('src', videoSrc);
+                  }
+                },
+                onClose: modal => {
+                  if ( modal.id == 'modal-youtube2' ) {
+                    modal.querySelector('iframe').setAttribute('src', '');
+                  }
+                }
+              });
+          .row
+            p Demo:
+          .row
+            p: button(type="button" class="modalBtn" data-unimodal-open="modal-youtube2" data-youtube-src="https://www.youtube.com/embed/-Ot0vHUyEpw") Youtube Modal without API
       // .block
 
 
@@ -304,6 +348,12 @@ html(lang="ru-RU")
         button.modal-close(type="button" data-unimodal-close) Close
         .iframe-container
           #youtube-player
+
+    .unimodal#modal-youtube2(data-unimodal)
+      .unimodal-body.modal-youtube(data-unimodal-body)
+        button.modal-close(type="button" data-unimodal-close) Close
+        .iframe-container
+          iframe(src="")
 
 
     script(src="demo/prism.js")

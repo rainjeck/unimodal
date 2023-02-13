@@ -61,7 +61,7 @@ const modal = new Unimodal({
   hash: false, /* hash support */
   onOpen: ( modal, button ) => {
     /* ... do your staff here ... */
-  }
+  },
   onClose: ( modal ) => {
     /* ... do your staff here ... */
   }
@@ -82,12 +82,14 @@ Unimodal.close('your-modal-id', () => {
 });
 
 /* Close All Modals */
-Unimodal.closeAll(() => {
-  /* ... your callback here ... */
-});
+Unimodal.closeAll();
 
 /* OR */
 modal.open('your-modal-id');
 modal.close('your-modal-id');
 modal.closeAll();
+```
+
+```
+npm i @babel/core @babel/plugin-proposal-class-properties @babel/plugin-transform-modules-umd @babel/preset-env browser-sync gulp gulp-autoprefixer gulp-babel gulp-clean-css gulp-concat gulp-header-comment gulp-jsmin gulp-load-plugins gulp-notify gulp-pug gulp-rename gulp-sourcemaps gulp-stylus gulp-umd
 ```

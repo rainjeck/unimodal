@@ -1,5 +1,5 @@
 class Unimodal {
-  constructor( opts = {} ) {
+  constructor(opts = {}) {
     let params = opts || {};
 
     this.scrollWindow = params.scrollWindow || false; // disabled scroll window
@@ -10,14 +10,15 @@ class Unimodal {
 
     this.init();
 
-    if ( this.hash ) {
+    if (this.hash) {
       this.showHashModal();
     }
   }
 
   init() {
+    // Open
     document.addEventListener('click', e => {
-      if ( !e.target.closest('[data-unimodal-open]') ) return;
+      if (!e.target.closest('[data-unimodal-open]')) return;
 
       e.preventDefault();
 
@@ -25,18 +26,21 @@ class Unimodal {
 
       const id = button.getAttribute('data-unimodal-open');
 
-      this.open( id, button );
+      this.openModal(id, button);
+
+      return;
     });
 
+    // Close
     document.addEventListener('click', e => {
-      if ( e.target.closest('[data-unimodal-close]') ||
-        ( !e.target.closest('[data-unimodal-body]') && e.target.closest('[data-unimodal]') && !e.target.closest('[data-unimodal-static]') )
+      if (e.target.closest('[data-unimodal-close]') ||
+        (!e.target.closest('[data-unimodal-body]') && e.target.closest('[data-unimodal]') && !e.target.closest('[data-unimodal-static]'))
       ) {
         const modal = e.target.closest('[data-unimodal]');
 
         const id = modal.id;
 
-        this.close( id );
+        this.closeModal(id);
 
         return;
       }
@@ -45,10 +49,10 @@ class Unimodal {
     });
   }
 
-  open( id, button = '' ) {
+  openModal(id, button = '') {
     this.closePrevious();
 
-    if ( !this.scrollWindow ) {
+    if (!this.scrollWindow) {
       this.disableScroll();
     }
 
@@ -58,30 +62,30 @@ class Unimodal {
 
     modal.scrollTop = 0;
 
-    if ( this.checkModalHeight( modal ) ) {
+    if (this.checkModalHeight(modal)) {
       this.disableScroll();
     }
 
-    this.setHash( modal.id );
+    this.setHash(modal.id);
 
-    if (this.onOpen && typeof this.onOpen === 'function') {
-      this.onOpen( modal, button );
+    if (this.onOpen) {
+      this.onOpen(modal, button);
     }
   }
 
-  close( id ) {
+  closeModal(id) {
     const modal = document.getElementById(id);
 
     modal.classList.remove('is-active');
 
     this.enableScroll();
 
-    if ( this.hash ) {
+    if (this.hash) {
       this.setHash();
     }
 
-    if (this.onClose && typeof this.onClose === 'function') {
-      this.onClose( modal );
+    if (this.onClose) {
+      this.onClose(modal);
     }
   }
 
@@ -93,12 +97,12 @@ class Unimodal {
     document.documentElement.classList.remove('is-unimodal-active');
   }
 
-  checkModalHeight( modalElem ) {
+  checkModalHeight(modalElem) {
     const modalBody = modalElem.querySelector('[data-unimodal-body]');
     const windowHeight = window.innerHeight;
     const modalBodyHeight = modalBody.offsetHeight;
 
-    if ( modalBodyHeight > windowHeight ) {
+    if (modalBodyHeight > windowHeight) {
       return true;
     }
 
@@ -108,9 +112,8 @@ class Unimodal {
   closePrevious() {
     const opened = document.querySelector('[data-unimodal].is-active');
 
-    if ( opened ) {
-      const id = opened.id;
-      this.close( id );
+    if (opened) {
+      this.close(opened.id);
     }
   }
 
@@ -118,8 +121,8 @@ class Unimodal {
     this.closePrevious();
   }
 
-  setHash( hash = '' ) {
-    if ( !this.hash ) return;
+  setHash(hash = '') {
+    if (!this.hash) return;
 
     const scroll = window.pageYOffset;
     window.location.hash = hash;
@@ -127,38 +130,52 @@ class Unimodal {
   }
 
   showHashModal() {
-    if ( !window.location.hash ) return;
+    if (!window.location.hash) return;
 
     const hash = window.location.hash;
 
     const modal = document.querySelector(hash);
 
-    if ( modal ) {
-      this.open( modal.id );
+    if (modal) {
+      this.openModal(modal.id);
+    }
+  }
+
+  open(id, callback) {
+    this.openModal(id);
+
+    if (callback) {
+      callback();
+    }
+  }
+
+  close(id, callback) {
+    this.closeModal(id);
+
+    if (callback) {
+      callback();
+    }
+  }
+
+  closeAll(callback) {
+    this.closePrevious();
+
+    if (callback) {
+      callback();
     }
   }
 }
 
-Unimodal.open = ( id, callback ) => {
-  Unimodal.prototype.open( id );
+(function () {
+  Unimodal.open = (id, callback) => {
+    Unimodal.prototype.open(id, callback);
+  };
 
-  if (callback && typeof callback === 'function') {
-    callback();
-  }
-}
+  Unimodal.close = (id, callback) => {
+    Unimodal.prototype.close(id, callback);
+  };
 
-Unimodal.close = (id, callback) => {
-  Unimodal.prototype.close( id );
-
-  if (callback && typeof callback === 'function') {
-    callback();
-  }
-}
-
-Unimodal.closeAll = callback => {
-  Unimodal.prototype.closePrevious();
-
-  if (callback && typeof callback === 'function') {
-    callback();
-  }
-}
+  Unimodal.closeAll = (callback) => {
+    Unimodal.prototype.closeAll(callback);
+  };
+})();

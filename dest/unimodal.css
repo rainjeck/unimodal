@@ -39,7 +39,6 @@ html.is-unimodal-active {
   background-color: #fff;
 }
 .unimodal.is-active .unimodal-body {
-  -webkit-animation: unimodal-show 0.2s ease-out 1 forwards;
   animation: unimodal-show 0.2s ease-out 1 forwards;
 }
 @-moz-keyframes unimodal-show {
